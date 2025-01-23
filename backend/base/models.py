@@ -10,5 +10,5 @@ class MyUser(AbstractUser):
     def __str__(self):
         return self.username
 
-#have to turn this to json format to pass through api
+
 
