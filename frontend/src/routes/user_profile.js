@@ -41,9 +41,9 @@ const UserDetails = ({username}) => {
             try{
                 const data = await get_user_profile_data(username);
                 setBio(data.bio)
-                setProfileImage(data.profileImage)
-                setFollowerCount(data.followerCount)
-                setFollowingCount(data.followingCount)
+                setProfileImage(data.profile_image)
+                setFollowerCount(data.follower_count)
+                setFollowingCount(data.following_count)
                 console.log(SERVER_URL, data.profile_image)
             } catch{
                 console.log('error')
@@ -61,17 +61,17 @@ const UserDetails = ({username}) => {
             <Heading>@{username}</Heading>
             <HStack gap='30px'>
                 <Box boxSize='150px' border='2px solid' borderColor='gray.700' bg='white' borderRadius='full' overflow='hidden'>
-                    <Image src = {`loading ? '' : ${SERVER_URL}${profileImage}`} boxSize='100%' objectFit='cover' />
+                    <Image src = {loading ? '':`${SERVER_URL}${profileImage}`} boxSize='100%' objectFit='cover' />
                 </Box>
                 <VStack gap='20px'>
                     <HStack gap='20px' fontSize='18px'>
                         <VStack>
                             <Text>Followers</Text>
-                            <Text>{ loading ? '-' : followerCount}</Text>
+                            <Text>{loading ? '-':followerCount}</Text>
                         </VStack>
                         <VStack>
                             <Text>Following</Text>
-                            <Text>{loading ? '-' : followingCount}</Text>
+                            <Text>{loading ? '-':followingCount}</Text>
                         </VStack>
                     </HStack>
                     <Button w='100%'>Edit Profile</Button>
